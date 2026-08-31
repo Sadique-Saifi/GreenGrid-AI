@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreenGrid AI — Configuration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/config.css">
+</head>
+<body data-page="config">
+<div class="shell">
+  <nav class="sidebar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1A1300" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#1A1300"/></svg>
+    </a>
+    <div class="nav-list">
+      <a class="nav-btn" data-page="dashboard" href="../index.html">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span class="lbl">Board</span>
+      </a>
+      <a class="nav-btn" data-page="analytics" href="analytics.html">
+        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        <span class="lbl">Analytics</span>
+      </a>
+      <a class="nav-btn" data-page="forecast" href="forecast.html">
+        <svg viewBox="0 0 24 24"><path d="M4 18l4-8 4 4 4-9 4 6"/><circle cx="20" cy="11" r="1"/></svg>
+        <span class="lbl">Forecast</span>
+      </a>
+      <a class="nav-btn" data-page="optimization" href="optimization.html">
+        <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.5"/></svg>
+        <span class="lbl">Optimize</span>
+      </a>
+      <a class="nav-btn" data-page="simulator" href="simulator.html">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>
+        <span class="lbl">Simulate</span>
+      </a>
+      <a class="nav-btn" data-page="config" href="config.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.36.44.63.8.72 0 0 .04 0 .06 0H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="lbl">Config</span>
+      </a>
+    </div>
+    <div class="nav-foot"><div class="pulse-dot" title="System live"></div></div>
+  </nav>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <h1 class="display">Configuration</h1>
+        <p>System info & parameters</p>
+      </div>
+      <div class="topbar-right">
+        <div class="status-pill"><span class="dot"></span> System live</div>
+        <div class="clock mono" id="clock">--:--:--</div>
+        <div class="admin-chip"><div class="av">GG</div><span>Admin</span></div>
+      </div>
+    </div>
+
+    <div class="content scroll-hide">
+      <div class="section-head">
+        <div>
+          <h2>Configuration & system info</h2>
+          <p>Site parameters, thresholds and model health</p>
+        </div>
+        <span class="badge-live">● live</span>
+      </div>
+
+      <div class="config-grid">
+        <div class="panel">
+          <h3>Site parameters</h3>
+          <div class="config-row"><span>Site</span><span>Delhi Campus Microgrid</span></div>
+          <div class="config-row"><span>Solar capacity</span><span>50 kW</span></div>
+          <div class="config-row"><span>Battery capacity</span><span>100 kWh</span></div>
+          <div class="config-row"><span>Avg. daily demand</span><span>350 kWh</span></div>
+          <div class="config-row"><span>Battery SOC ceiling</span><span>95%</span></div>
+          <div class="config-row"><span>Battery SOC floor</span><span>15%</span></div>
+          <div class="config-row"><span>Simulation speed</span><span>1x (real-time)</span></div>
+        </div>
+        <div class="panel">
+          <h3>Model health</h3>
+          <div class="card-grid" style="grid-template-columns:repeat(3,1fr); margin-bottom:0;">
+            <div class="health-metric"><div class="hv">0.32</div><div class="hl">MAE kWh</div></div>
+            <div class="health-metric"><div class="hv">0.47</div><div class="hl">RMSE kWh</div></div>
+            <div class="health-metric"><div class="hv">0.91</div><div class="hl">R²</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Data sources</h3>
+          <div class="config-row"><span>Energy meter feed</span><span style="color:var(--battery)">Connected</span></div>
+          <div class="config-row"><span>Weather API</span><span style="color:var(--battery)">Connected</span></div>
+          <div class="config-row"><span>Battery BMS</span><span style="color:var(--battery)">Connected</span></div>
+          <div class="config-row"><span>Grid tariff feed</span><span style="color:var(--muted-2)">Static (TOU table)</span></div>
+        </div>
+        <div class="panel">
+          <h3>Tech stack</h3>
+          <div class="config-row"><span>Frontend</span><span>HTML · CSS · JS · Chart.js</span></div>
+          <div class="config-row"><span>Backend</span><span>FastAPI · Uvicorn</span></div>
+          <div class="config-row"><span>ML</span><span>Scikit-learn · XGBoost</span></div>
+          <div class="config-row"><span>Database</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/config.js"></script>
+</body>
+</html>

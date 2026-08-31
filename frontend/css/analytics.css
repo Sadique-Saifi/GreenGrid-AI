@@ -1,0 +1,4 @@
+/* ============================================================
+   analytics.css — page-specific styles for Energy Analytics
+   ============================================================ */
+.analytics-summary .config-row span:last-child{ font-weight:600; }

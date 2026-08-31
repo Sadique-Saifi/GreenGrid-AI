@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreenGrid AI — Forecast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/forecast.css">
+</head>
+<body data-page="forecast">
+<div class="shell">
+  <nav class="sidebar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1A1300" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#1A1300"/></svg>
+    </a>
+    <div class="nav-list">
+      <a class="nav-btn" data-page="dashboard" href="../index.html">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span class="lbl">Board</span>
+      </a>
+      <a class="nav-btn" data-page="analytics" href="analytics.html">
+        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        <span class="lbl">Analytics</span>
+      </a>
+      <a class="nav-btn" data-page="forecast" href="forecast.html">
+        <svg viewBox="0 0 24 24"><path d="M4 18l4-8 4 4 4-9 4 6"/><circle cx="20" cy="11" r="1"/></svg>
+        <span class="lbl">Forecast</span>
+      </a>
+      <a class="nav-btn" data-page="optimization" href="optimization.html">
+        <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.5"/></svg>
+        <span class="lbl">Optimize</span>
+      </a>
+      <a class="nav-btn" data-page="simulator" href="simulator.html">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>
+        <span class="lbl">Simulate</span>
+      </a>
+      <a class="nav-btn" data-page="config" href="config.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.36.44.63.8.72 0 0 .04 0 .06 0H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="lbl">Config</span>
+      </a>
+    </div>
+    <div class="nav-foot"><div class="pulse-dot" title="System live"></div></div>
+  </nav>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <h1 class="display">Forecast</h1>
+        <p>AI prediction for future demand and solar generation</p>
+      </div>
+      <div class="topbar-right">
+        <div class="status-pill"><span class="dot"></span> System live</div>
+        <div class="clock mono" id="clock">--:--:--</div>
+        <div class="admin-chip"><div class="av">GG</div><span>Admin</span></div>
+      </div>
+    </div>
+
+    <div class="content scroll-hide">
+      <div class="section-head">
+        <div>
+          <h2>AI forecast</h2>
+          <p>Next 6-hour demand & solar generation prediction</p>
+        </div>
+        <span class="tag solar confidence-tag">Model confidence 91%</span>
+      </div>
+
+      <div class="two-col">
+        <div class="panel wide-card" style="grid-column:1/-1;">
+          <h3>Predicted demand vs. solar — next 6 hours</h3>
+          <div class="chart-wrap"><canvas id="forecastChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:14px;">
+        <div class="panel">
+          <h3>Forecast summary</h3>
+          <div class="config-row"><span>Next hour demand</span><span>4.2 kWh</span></div>
+          <div class="config-row"><span>Next 3 hours demand</span><span>12.7 kWh</span></div>
+          <div class="config-row"><span>Predicted peak window</span><span style="color:var(--solar)">19:00 – 21:00</span></div>
+          <div class="config-row"><span>Solar next hour</span><span>3.1 kWh</span></div>
+          <div class="config-row"><span>Prediction interval</span><span>± 0.4 kWh</span></div>
+        </div>
+        <div class="panel">
+          <h3>Model type</h3>
+          <div class="config-row"><span>Demand model</span><span>XGBoost</span></div>
+          <div class="config-row"><span>Solar model</span><span>Random Forest</span></div>
+          <div class="config-row"><span>Advanced mode</span><span>LSTM (optional)</span></div>
+          <div class="config-row"><span>Features used</span><span>weather, time, SOC</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/forecast.js"></script>
+</body>
+</html>

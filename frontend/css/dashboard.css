@@ -1,0 +1,39 @@
+/* ============================================================
+   dashboard.css — page-specific styles for the Dashboard
+   (metric card accent colors + the dynamic tree-like flow UI)
+   ============================================================ */
+.metric-card.solar{ --accent:var(--solar); }
+.metric-card.demand{ --accent:var(--grid); }
+.metric-card.battery{ --accent:var(--battery); }
+.metric-card.gridc{ --accent:var(--danger); }
+.metric-card.renew{ --accent:var(--battery); }
+.metric-card.co2{ --accent:#F2B705; }
+
+/* Dynamic tree-like flow UI (Solar -> House / Battery) */
+.flow-panel{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
+.flow-panel .fp-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
+.fp-head h3{ font-family:'Space Grotesk',sans-serif; font-size:14.5px; font-weight:600; }
+.fp-head .fp-total{ font-size:11.5px; color:var(--muted-2); }
+.fp-total b{ color:var(--solar); font-family:'JetBrains Mono',monospace; }
+
+.flowline-row{ display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+.flow-node{ display:flex; flex-direction:column; align-items:center; gap:8px; width:130px; }
+.node-circle{ width:74px; height:74px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; border:1.5px solid var(--line-strong); background:var(--panel-2); position:relative; }
+.node-circle.solar{ border-color:rgba(242,183,5,0.4); box-shadow:0 0 22px rgba(242,183,5,0.12); }
+.node-circle.house{ border-color:rgba(124,147,255,0.4); box-shadow:0 0 22px rgba(124,147,255,0.1); }
+.node-circle.battery{ border-color:rgba(47,212,176,0.4); box-shadow:0 0 22px rgba(47,212,176,0.12); }
+.node-circle svg{ width:20px; height:20px; stroke-width:1.6; fill:none; }
+.node-circle.solar svg{ stroke:var(--solar); }
+.node-circle.house svg{ stroke:var(--grid); }
+.node-circle.battery svg{ stroke:var(--battery); }
+.node-name{ font-size:11px; color:var(--muted); text-align:center; }
+.node-name small{ display:block; color:var(--muted-2); font-size:9.5px; margin-top:1px; }
+
+.split-group{ display:flex; flex-direction:column; gap:30px; }
+.connector{ display:flex; flex-direction:column; align-items:center; width:90px; }
+.connector .line{ height:2px; width:100%; position:relative; overflow:visible; border-radius:2px; }
+.connector .line.solar-house{ background:linear-gradient(90deg, var(--solar), var(--grid)); }
+.connector .line.solar-batt{ background:linear-gradient(90deg, var(--solar), var(--battery)); }
+.connector .kw{ font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted); margin-top:6px; }
+.connector .dot-run{ position:absolute; top:-2.5px; width:6px; height:6px; border-radius:50%; background:#fff; box-shadow:0 0 6px #fff; animation:run 2.2s linear infinite; }
+@keyframes run{ from{ left:-4%; } to{ left:100%; } }
